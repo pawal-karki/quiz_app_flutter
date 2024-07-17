@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,6 +15,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: QuizHomePage(),
+      theme: ThemeData(
+        textTheme: GoogleFonts.ralewayTextTheme(),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.deepPurple,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10)
+          ),
+          fixedSize: Size(200, 50),
+        ),
+      )
+    )
     );
   }
 }
@@ -35,6 +49,9 @@ class _QuizHomePageState extends State<QuizHomePage> {
   int _currentQuestionList = 0;
   int _score = 0;
   bool _quizFinished = false;
+  bool _startQuiz = false;
+
+
 
   @override
   void initState() {
@@ -69,6 +86,11 @@ class _QuizHomePageState extends State<QuizHomePage> {
       _quizFinished = false;
     });
   }
+  void _startQuizBtn(){
+    setState((){
+      _startQuiz = true;
+    });
+  }
 
   Widget _buildOptionButton(String option) {
     return ElevatedButton(
@@ -90,7 +112,23 @@ class _QuizHomePageState extends State<QuizHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    if (_quizFinished) {
+    if (!_startQuiz){
+      return Scaffold(
+        appBar: AppBar(
+          title: Text("Quiz App"),
+          centerTitle: true,
+          backgroundColor: Colors.deepPurple,
+          elevation: 10,
+        ),
+        body: Center(
+          child: ElevatedButton(
+            onPressed: _startQuizBtn,
+            child: Text('Start Quiz'),
+          ),
+        ),
+      );
+    }
+    else if (_quizFinished) {
       return Scaffold(
           appBar: AppBar(
               title: Text(
