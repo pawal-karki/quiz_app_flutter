@@ -1,0 +1,64 @@
+{
+    "quiz": [
+        {
+            "question": "Which of the following is not a programming language?",
+            "options": ["C", "C++", "Java", "Python"],
+            "answer": "C++"
+        },
+        {
+            "question": "Which of the following is not a framework?",
+            "options": ["React", "Angular", "Vue", "Django"],
+            "answer": "Django"
+        },
+        {
+            "question": "What does HTML stand for?",
+            "options": ["Hyper Text Markup Language", "High Tech Markup Language", "Hyperlink and Text Markup Language", "Home Tool Markup Language"],
+            "answer": "Hyper Text Markup Language"
+        },
+        {
+            "question": "Which programming language is known as the 'mother of all languages'?",
+            "options": ["C", "Java", "COBOL", "Assembly Language"],
+            "answer": "COBOL"
+        },
+        {
+            "question": "What does CSS stand for?",
+            "options": ["Colorful Style Sheets", "Computer Style Sheets", "Cascading Style Sheets", "Creative Style Sheets"],
+            "answer": "Cascading Style Sheets"
+        },
+        {
+            "question": "Which programming language is used to create web pages?",
+            "options": ["Python", "C++", "JavaScript", "Swift"],
+            "answer": "JavaScript"
+        },
+        {
+            "question": "What is the file extension for Python files?",
+            "options": [".py", ".pt", ".pyt", ".ptn"],
+            "answer": ".py"
+        },
+        {
+            "question": "Which of the following is an object-oriented programming language?",
+            "options": ["C", "Java", "COBOL", "Assembly Language"],
+            "answer": "Java"
+        },
+        {
+            "question": "What is the output of 2 + 3 * 4?",
+            "options": ["20", "14", "13", "10"],
+            "answer": "14"
+        },
+        {
+            "question": "What is the most popular version control system?",
+            "options": ["CVS", "SVN", "Git", "Mercurial"],
+            "answer": "Git"
+        },
+        {
+            "question": "What is the full form of SQL?",
+            "options": ["Structured Query Language", "Sequential Query Language", "Standard Query Language", "Secure Query Language"],
+            "answer": "Structured Query Language"
+        },
+        {
+            "question": "Which programming language uses the slogan 'There's more than one way to do it'?",
+            "options": ["Perl", "Python", "PHP", "Ruby"],
+            "answer": "Perl"
+        }
+    ]
+}
