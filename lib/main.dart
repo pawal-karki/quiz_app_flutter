@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:flutter/services.dart';
+// import 'dart:convert';
+// import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../models/quiz_models.dart';
+import '../services/quiz_service.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,10 +34,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-Future<List<dynamic>> loadJson() async {
-  String jsonString = await rootBundle.loadString('assets/data.json');
-  return json.decode(jsonString)['quiz'];
-}
+
 
 class QuizHomePage extends StatefulWidget {
   const QuizHomePage({super.key});
@@ -45,7 +44,7 @@ class QuizHomePage extends StatefulWidget {
 }
 
 class _QuizHomePageState extends State<QuizHomePage> {
-  List<dynamic>? _questionsList;
+  List<QuizQuestion>? _questionsList;
   int _currentQuestionList = 0;
   int _score = 0;
   bool _quizFinished = false;
@@ -60,14 +59,14 @@ class _QuizHomePageState extends State<QuizHomePage> {
   }
 
   Future<void> _loadQuestions() async {
-    List<dynamic> questions = await loadJson();
+    List<QuizQuestion> questions = await fetchQuizQuestions();
     setState(() {
       _questionsList = questions;
     });
   }
 
   void _answerQuestion(String answer) {
-    if (answer == _questionsList![_currentQuestionList]['answer']) {
+    if (answer == _questionsList![_currentQuestionList].answer) {
       _score++;
     }
     setState(() {
@@ -103,7 +102,7 @@ class _QuizHomePageState extends State<QuizHomePage> {
 
   List<Widget> _buildOptions() {
     List<Widget> options = [];
-    for (String option in _questionsList![_currentQuestionList]['options']) {
+    for (String option in _questionsList![_currentQuestionList].options) {
       options.add(_buildOptionButton(option));
       options.add(SizedBox(height: 10));
     }
@@ -163,7 +162,7 @@ class _QuizHomePageState extends State<QuizHomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(_questionsList![_currentQuestionList]['question']),
+                Text(_questionsList![_currentQuestionList].question),
                 SizedBox(height: 20),
                 ..._buildOptions(),
               ],
